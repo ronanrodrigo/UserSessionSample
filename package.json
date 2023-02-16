@@ -6,7 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "bundle": "react-native bundle --entry-file ./index.js --bundle-output \"/Users/ronan.nunes/Developer/PicPay/picpay-react-native/natives/ios/Ramaleon/Ramaleon/UserSession/UserSessionSample.bundle\" --minify true",
+    "bundle": "react-native bundle --entry-file ./index.js --bundle-output \"/Users/joaopereira/picpay-react-native/natives/ios/Ramaleon/Ramaleon/UserSession/UserSessionSample.bundle\" --minify true",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },

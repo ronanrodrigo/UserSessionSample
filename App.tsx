@@ -23,6 +23,7 @@ import {
 import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 
 const {UserBridge} = NativeModules;
+const {NetworkBridge} = NativeModules;
 
 const Section: React.FC<
   PropsWithChildren<{
@@ -58,14 +59,32 @@ const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const [user, setUser] = useState({});
   useEffect(() => {
-    UserBridge.getUser().then((receivedUser: {}) => {
-      setUser(receivedUser);
-    });
+    // UserBridge.getUser().then((receivedUser: {}) => {
+    //   setUser(receivedUser);
+    // });
+    load();
   }, []);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  async function load() {
+    try {
+      const endPoint = {
+        path: '/path',
+        method: 'POST',
+        parameters: {parameter: 'parameter'},
+        body: {body: 'body'},
+        customHeaders: {custom: 'CustomHeader'},
+      };
+      const userTeste = await NetworkBridge.execute(endPoint, 'defaultKeys');
+      setUser(userTeste);
+      console.log(`Created a new event with id ${userTeste}`);
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   return (
     <SafeAreaView style={backgroundStyle}>
